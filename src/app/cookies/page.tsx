@@ -13,7 +13,7 @@ export default function CookiePolicyPage() {
                     >
                         Cookie Policy
                     </motion.h1>
-                    <p className="subtitle">Informazioni sull'uso dei cookie su questo sito.</p>
+                    <p className="subtitle">Informazioni sull&apos;uso dei cookie su questo sito.</p>
                 </div>
             </section>
 
@@ -21,7 +21,7 @@ export default function CookiePolicyPage() {
                 <div className="container narrow-container">
                     <div className="legal-block">
                         <h2>Cosa sono i Cookie</h2>
-                        <p>I cookie sono piccoli file di testo che i siti visitati dall'utente inviano al suo terminale, dove vengono memorizzati per essere poi ritrasmessi agli stessi siti alla successiva visita del medesimo utente.</p>
+                        <p>I cookie sono piccoli file di testo che i siti visitati dall&apos;utente inviano al suo terminale, dove vengono memorizzati per essere poi ritrasmessi agli stessi siti alla successiva visita del medesimo utente.</p>
                     </div>
                     <div className="legal-block">
                         <h2>Tipologie di Cookie che utilizziamo</h2>

@@ -47,7 +47,7 @@ export default function HomePage() {
               transition={{ delay: 0.2 }}
               className="large-text"
             >
-              "Pandora è un osservatorio civico nato per promuovere la trasparenza e l'onestà intellettuale. Analizziamo i fatti, approfondiamo i documenti e promuoviamo una discussione politica libera da slogan e pregiudizi."
+              &quot;Pandora è un osservatorio civico nato per promuovere la trasparenza e l&apos;onestà intellettuale. Analizziamo i fatti, approfondiamo i documenti e promuoviamo una discussione politica libera da slogan e pregiudizi.&quot;
             </motion.p>
           </div>
         </div>
@@ -104,7 +104,7 @@ export default function HomePage() {
           <div className="method-text">
             <h2>Oltre il pregiudizio</h2>
             <p>
-              In un'epoca di polarizzazione estrema, Pandora si pone come un filtro critico. Non ci interessa la lotta politica fine a se stessa, ma la qualità della discussione pubblica.
+              In un&apos;epoca di polarizzazione estrema, Pandora si pone come un filtro critico. Non ci interessa la lotta politica fine a se stessa, ma la qualità della discussione pubblica.
             </p>
             <p>
               Ogni nostra analisi parte dai documenti. Perché i fatti non hanno colore politico, ma hanno bisogno di essere portati alla luce con competenza e rigore.
@@ -125,7 +125,7 @@ export default function HomePage() {
 
       <section className="cta-section">
         <div className="container text-center">
-          <h2 className="serif-italic">"Niente di personale."</h2>
+          <h2 className="serif-italic">&quot;Niente di personale.&quot;</h2>
           <p>Unisciti alla nostra visione di una politica più trasparente.</p>
           <button className="btn-secondary">Diventa Socio</button>
         </div>

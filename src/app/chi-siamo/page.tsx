@@ -15,7 +15,7 @@ export default function ChiSiamoPage() {
                     >
                         Chi Siamo
                     </motion.h1>
-                    <p className="subtitle">Un gruppo di cittadini uniti dall'amore per la propria comunità e dalla voglia di chiarezza.</p>
+                    <p className="subtitle">Un gruppo di cittadini uniti dall&apos;amore per la propria comunità e dalla voglia di chiarezza.</p>
                 </div>
             </section>
 
@@ -24,7 +24,7 @@ export default function ChiSiamoPage() {
                     <div className="about-text">
                         <h2>La nostra storia</h2>
                         <p>
-                            Pandora nasce dall'esigenza di superare la narrazione politica fatta di soli slogan. Sentivamo il bisogno di uno spazio dove i fatti potessero essere analizzati con freddezza e onestà intellettuale, lontano dalle passioni di parte che spesso offuscano il giudizio.
+                            Pandora nasce dall&apos;esigenza di superare la narrazione politica fatta di soli slogan. Sentivamo il bisogno di uno spazio dove i fatti potessero essere analizzati con freddezza e onestà intellettuale, lontano dalle passioni di parte che spesso offuscano il giudizio.
                         </p>
                         <p>
                             Non siamo un partito, né siamo legati a correnti politiche. Siamo un osservatorio: guardiamo, studiamo, e riportiamo ciò che i documenti dicono.
@@ -39,7 +39,7 @@ export default function ChiSiamoPage() {
                         <div className="stat-card">
                             <Target size={40} className="icon-gold" />
                             <h3>Obiettivo</h3>
-                            <p>Migliorare l'amministrazione attraverso la consapevolezza dei cittadini.</p>
+                            <p>Migliorare l&apos;amministrazione attraverso la consapevolezza dei cittadini.</p>
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@ export default function ChiSiamoPage() {
                         <div className="team-member">
                             <div className="member-avatar"><Users size={48} /></div>
                             <h3>I Soci</h3>
-                            <p>Il cuore pulsante dell'associazione che sostiene le nostre attività.</p>
+                            <p>Il cuore pulsante dell&apos;associazione che sostiene le nostre attività.</p>
                         </div>
                     </div>
                 </div>
