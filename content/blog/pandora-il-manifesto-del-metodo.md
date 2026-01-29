@@ -8,7 +8,7 @@ description: "C'è un divario profondo tra la politica raccontata e la politica 
 
 C'è un divario profondo tra la politica raccontata e la politica amministrata. Tra il post su Facebook di un assessore e la delibera chiusa in un cassetto comunale. Tra il conflitto urlato in pubblico e l'accordo siglato in privato.
 
-Pandora nasce per colmare questo divario.
+Pandora nasce per colmare questo divario, partendo dal nostro territorio, Solofra, per analizzare con rigore ogni atto amministrativo.
 
 Non siamo qui per aggiungere altro rumore, ma per fare ordine. Non ci interessa la critica ideologica, ci interessa la precisione dei fatti.
 

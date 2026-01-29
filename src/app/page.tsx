@@ -14,10 +14,10 @@ export default function HomePage() {
           transition={{ duration: 0.8 }}
           className="container hero-content"
         >
-          <span className="badge">Osservatorio Civico</span>
+          <span className="badge">Osservatorio Civico Solofra</span>
           <h1>Pandora</h1>
           <p className="hero-subtitle">
-            Niente di personale. Solo trasparenza e onestà intellettuale.
+            Niente di personale. Solo trasparenza e onestà intellettuale per Solofra e il territorio.
           </p>
           <motion.div
             initial={{ opacity: 0 }}
@@ -47,7 +47,7 @@ export default function HomePage() {
               transition={{ delay: 0.2 }}
               className="large-text"
             >
-              &quot;Pandora è un osservatorio civico nato per promuovere la trasparenza e l&apos;onestà intellettuale. Analizziamo i fatti, approfondiamo i documenti e promuoviamo una discussione politica libera da slogan e pregiudizi.&quot;
+              &quot;Pandora è un osservatorio civico nato a Solofra per promuovere la trasparenza e l&apos;onestà intellettuale. Analizziamo i fatti del nostro territorio, approfondiamo i documenti e promuoviamo una discussione politica libera da slogan e pregiudizi.&quot;
             </motion.p>
           </div>
         </div>
@@ -88,7 +88,7 @@ export default function HomePage() {
               <ul>
                 <li>
                   <ArrowRight size={16} />
-                  <span>Analisi dei fatti locali e nazionali</span>
+                  <span>Analisi dei fatti di Solofra e del territorio</span>
                 </li>
                 <li>
                   <ArrowRight size={16} />

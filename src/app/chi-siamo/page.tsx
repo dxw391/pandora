@@ -15,7 +15,7 @@ export default function ChiSiamoPage() {
                     >
                         Chi Siamo
                     </motion.h1>
-                    <p className="subtitle">Un gruppo di cittadini uniti dall&apos;amore per la propria comunità e dalla voglia di chiarezza.</p>
+                    <p className="subtitle">Un gruppo di cittadini di Solofra uniti dall&apos;amore per la propria comunità e dalla voglia di chiarezza.</p>
                 </div>
             </section>
 
@@ -27,7 +27,7 @@ export default function ChiSiamoPage() {
                             Pandora nasce dall&apos;esigenza di superare la narrazione politica fatta di soli slogan. Sentivamo il bisogno di uno spazio dove i fatti potessero essere analizzati con freddezza e onestà intellettuale, lontano dalle passioni di parte che spesso offuscano il giudizio.
                         </p>
                         <p>
-                            Non siamo un partito, né siamo legati a correnti politiche. Siamo un osservatorio: guardiamo, studiamo, e riportiamo ciò che i documenti dicono.
+                            Non siamo un partito, né siamo legati a correnti politiche. Siamo un osservatorio radicato a Solofra: guardiamo, studiamo, e riportiamo ciò che i documenti dicono, partendo dalle sfide del nostro territorio per promuovere una visione civica più ampia.
                         </p>
                     </div>
                     <div className="about-stats-grid">

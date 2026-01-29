@@ -14,8 +14,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Pandora — Osservatorio Civico",
-  description: "Osservatorio civico per la trasparenza e l'onestà intellettuale. Analizziamo i fatti, approfondiamo i documenti e promuoviamo una discussione politica libera da slogan e pregiudizi.",
+  title: "Pandora — Osservatorio Civico Solofra",
+  description: "Osservatorio civico per la trasparenza e l'onestà intellettuale a Solofra e nel territorio. Analizziamo i fatti, approfondiamo i documenti e promuoviamo una discussione politica libera da slogan e pregiudizi.",
 };
 
 export default function RootLayout({

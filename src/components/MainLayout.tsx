@@ -73,7 +73,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                             <Landmark size={20} />
                             <span>PANDORA</span>
                         </div>
-                        <p>© 2026 Pandora Osservatorio Civico.</p>
+                        <p>© 2026 Pandora Osservatorio Civico Solofra.</p>
                         <div className="legal-footer-links">
                             <Link href="/privacy">Privacy Policy</Link>
                             <span> • </span>
