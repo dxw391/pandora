@@ -34,6 +34,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                     <nav className="nav desktop-nav">
                         <Link href="/" className={isActive('/') ? 'active' : ''}>Home</Link>
                         <Link href="/chi-siamo" className={isActive('/chi-siamo') ? 'active' : ''}>Chi Siamo</Link>
+                        <Link href="/blog" className={isActive('/blog') ? 'active' : ''}>Blog</Link>
                         <Link href="/statuto" className={isActive('/statuto') ? 'active' : ''}>Statuto</Link>
                         <Link href="/trasparenza" className={isActive('/trasparenza') ? 'active' : ''}>Trasparenza</Link>
                         <a href="mailto:info@pandora.it" className="btn-primary">Contattaci</a>
@@ -53,6 +54,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                     >
                         <Link href="/" className={isActive('/') ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>Home</Link>
                         <Link href="/chi-siamo" className={isActive('/chi-siamo') ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>Chi Siamo</Link>
+                        <Link href="/blog" className={isActive('/blog') ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>Blog</Link>
                         <Link href="/statuto" className={isActive('/statuto') ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>Statuto</Link>
                         <Link href="/trasparenza" className={isActive('/trasparenza') ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>Trasparenza</Link>
                         <a href="mailto:info@pandora.it" className="btn-primary">Contattaci</a>
@@ -82,6 +84,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         <div className="link-group">
                             <h4>Associazione</h4>
                             <Link href="/chi-siamo">Chi siamo</Link>
+                            <Link href="/blog">Blog</Link>
                             <Link href="/statuto">Statuto</Link>
                             <Link href="/trasparenza">Trasparenza</Link>
                         </div>
