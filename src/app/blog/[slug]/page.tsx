@@ -61,12 +61,21 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                         <MDXContent code={post.body} />
                     </motion.div>
 
-                    <div className="post-footer mt-12 pt-8 border-t border-gray-200">
-                        <div className="cta-mini text-center p-8 bg-gray-50 rounded-lg">
-                            <h3>Ti interessa quello che facciamo?</h3>
-                            <p className="mb-6">Resta aggiornato sulle nostre attività o diventa parte del cambiamento.</p>
-                            <Link href="/#contatti" className="btn-primary">Contattaci</Link>
-                        </div>
+                    <div className="post-footer mt-20">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="blog-cta"
+                        >
+                            <div className="blog-cta-content">
+                                <h3>Ti interessa quello che facciamo?</h3>
+                                <p>Resta aggiornato sulle nostre attività o diventa parte del cambiamento.</p>
+                                <Link href="/#contatti" className="btn-primary">
+                                    Contattaci
+                                </Link>
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
             </section>
