@@ -161,7 +161,7 @@ const ContactForm: React.FC = () => {
       } else {
         setStatus({ type: 'error', message: result.message });
       }
-    } catch (error) {
+    } catch {
       setStatus({ type: 'error', message: 'Errore di connessione. Riprova più tardi.' });
     } finally {
       setIsSubmitting(false);

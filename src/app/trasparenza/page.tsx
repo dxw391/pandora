@@ -57,7 +57,7 @@ export default function TrasparenzaPage() {
                         </p>
                         <div className="funding-link">
                             <a href="#" className="link-arrow">
-                                <span>Consulta l'elenco dei contributi liberali</span>
+                                <span>Consulta l&apos;elenco dei contributi liberali</span>
                                 <ExternalLink size={16} />
                             </a>
                         </div>

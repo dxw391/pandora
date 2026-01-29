@@ -37,7 +37,7 @@ export default function StatutoPage() {
                                     <FileText className="icon-gold" size={24} />
                                     <h2>Art. 1 - Costituzione</h2>
                                 </div>
-                                <p>È costituita l'associazione "Pandora - Osservatorio Civico per la trasparenza e l'onestà intellettuale". L'associazione è apartitica, aconfessionale e non persegue fini di lucro.</p>
+                                <p>È costituita l&apos;associazione &quot;Pandora - Osservatorio Civico per la trasparenza e l&apos;onestà intellettuale&quot;. L&apos;associazione è apartitica, aconfessionale e non persegue fini di lucro.</p>
                             </div>
 
                             <div id="art2" className="statuto-article">
@@ -45,7 +45,7 @@ export default function StatutoPage() {
                                     <Gavel className="icon-gold" size={24} />
                                     <h2>Art. 2 - Finalità</h2>
                                 </div>
-                                <p>L'associazione si pone come obiettivo l'analisi critica della vita politica e amministrativa, la promozione della trasparenza degli atti pubblici e la diffusione di una cultura basata sul libero confronto e sull'onestà intellettuale.</p>
+                                <p>L&apos;associazione si pone come obiettivo l&apos;analisi critica della vita politica e amministrativa, la promozione della trasparenza degli atti pubblici e la diffusione di una cultura basata sul libero confronto e sull&apos;onestà intellettuale.</p>
                             </div>
 
                             <div id="art3" className="statuto-article">
@@ -53,7 +53,7 @@ export default function StatutoPage() {
                                     <HelpCircle className="icon-gold" size={24} />
                                     <h2>Art. 3 - Soci</h2>
                                 </div>
-                                <p>Possono far parte dell'associazione tutti i cittadini che ne condividano lo spirito e gli obiettivi e che si impegnino a rispettare le norme del presente statuto.</p>
+                                <p>Possono far parte dell&apos;associazione tutti i cittadini che ne condividano lo spirito e gli obiettivi e che si impegnino a rispettare le norme del presente statuto.</p>
                             </div>
 
                             <div className="statuto-download">

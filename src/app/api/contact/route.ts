@@ -15,7 +15,7 @@ export async function POST(request: Request) {
             success: true,
             message: 'Messaggio inviato con successo! Ti ricontatteremo presto.'
         });
-    } catch (_error) {
+    } catch {
         return NextResponse.json({
             success: false,
             message: 'Si è verificato un errore durante l\'invio del messaggio.'

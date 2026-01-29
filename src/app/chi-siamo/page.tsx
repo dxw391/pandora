@@ -48,7 +48,7 @@ export default function ChiSiamoPage() {
             <section className="team-section bg-secondary">
                 <div className="container">
                     <div className="section-header">
-                        <h2>L'Associazione</h2>
+                        <h2>L&apos;Associazione</h2>
                         <p>Le persone che rendono possibile Pandora ogni giorno.</p>
                     </div>
                     <div className="team-grid">
