@@ -40,7 +40,7 @@ export default function BlogPage() {
 
             <section className="blog-list-section bg-secondary">
                 <div className="container">
-                    <div className="values-grid">
+                    <div className="blog-posts-grid">
                         {sortedPosts.map((post, index) => (
                             <motion.article
                                 key={post.slug}
@@ -48,7 +48,7 @@ export default function BlogPage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="value-card" // Riutilizzo la classe value-card per coerenza
+                                className="blog-post-card"
                             >
                                 <div className="post-meta">
                                     <span className="post-date">

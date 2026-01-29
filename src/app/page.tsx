@@ -113,7 +113,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="contact-form-section bg-secondary">
+      <section className="contact-form-section bg-secondary" id="contatti">
         <div className="container narrow-container">
           <div className="section-header">
             <h2>Contattaci</h2>
