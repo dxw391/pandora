@@ -16,7 +16,7 @@ export async function POST(request: Request) {
             }, { status: 500 });
         }
 
-        const { data, error } = await resend.emails.send({
+        const { error } = await resend.emails.send({
             from: 'Pandora <onboarding@resend.dev>', // Default in test, cambierà con dominio custom
             to: [process.env.CONTACT_EMAIL || 'aureliopetrone@gmail.com'], // Fallback email
             subject: `Nuovo messaggio da ${name}`,

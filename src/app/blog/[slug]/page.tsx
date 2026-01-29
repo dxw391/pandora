@@ -4,7 +4,7 @@ import React, { useMemo } from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Calendar, ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import * as runtime from 'react/jsx-runtime';
 import { posts } from 'content';
 
