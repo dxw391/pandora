@@ -6,9 +6,12 @@ import { usePathname } from 'next/navigation';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { Landmark, Menu, X } from 'lucide-react';
 import CookieBanner from './CookieBanner';
+import AuthModal from './AuthModal';
+import UserMenu from './UserMenu';
 
 const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
     const pathname = usePathname();
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
@@ -35,9 +38,11 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         <Link href="/" className={isActive('/') ? 'active' : ''}>Home</Link>
                         <Link href="/chi-siamo" className={isActive('/chi-siamo') ? 'active' : ''}>Chi Siamo</Link>
                         <Link href="/blog" className={isActive('/blog') ? 'active' : ''}>Blog</Link>
+                        <Link href="/temi" className={isActive('/temi') ? 'active' : ''}>Temi</Link>
                         <Link href="/statuto" className={isActive('/statuto') ? 'active' : ''}>Statuto</Link>
                         <Link href="/trasparenza" className={isActive('/trasparenza') ? 'active' : ''}>Trasparenza</Link>
-                        <a href="mailto:info@pandora.it" className="btn-primary">Contattaci</a>
+                        <UserMenu />
+                        <button onClick={() => setIsAuthModalOpen(true)} className="btn-primary">Accedi</button>
                     </nav>
 
                     <button className="mobile-menu-btn" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -55,6 +60,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         <Link href="/" className={isActive('/') ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>Home</Link>
                         <Link href="/chi-siamo" className={isActive('/chi-siamo') ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>Chi Siamo</Link>
                         <Link href="/blog" className={isActive('/blog') ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>Blog</Link>
+                        <Link href="/temi" className={isActive('/temi') ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>Temi</Link>
                         <Link href="/statuto" className={isActive('/statuto') ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>Statuto</Link>
                         <Link href="/trasparenza" className={isActive('/trasparenza') ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>Trasparenza</Link>
                         <a href="mailto:info@pandora.it" className="btn-primary">Contattaci</a>
@@ -85,6 +91,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                             <h4>Associazione</h4>
                             <Link href="/chi-siamo">Chi siamo</Link>
                             <Link href="/blog">Blog</Link>
+                            <Link href="/temi">Temi</Link>
                             <Link href="/statuto">Statuto</Link>
                             <Link href="/trasparenza">Trasparenza</Link>
                         </div>
@@ -97,6 +104,8 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                     </div>
                 </div>
             </footer>
+
+            <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
         </div>
     );
 };
