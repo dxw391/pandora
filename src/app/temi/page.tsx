@@ -6,6 +6,19 @@ import { motion } from 'framer-motion';
 import { Leaf, Car, GraduationCap, ArrowRight, Lightbulb } from 'lucide-react';
 import { themes, proposals } from 'content'
 
+interface Theme {
+    slug: string;
+    title: string;
+    description?: string;
+    icon?: string;
+    permalink: string;
+    body: string;
+}
+
+interface Proposal {
+    theme: string;
+}
+
 const iconMap: Record<string, React.ReactNode> = {
     Leaf: <Leaf size={32} />,
     Car: <Car size={32} />,
@@ -45,8 +58,8 @@ export default function TemiPage() {
             <section className="themes-list-section bg-secondary">
                 <div className="container">
                     <div className="themes-grid">
-                        {themes.map((theme: any, index: number) => {
-                            const themeProposals = proposals.filter((p: any) => p.theme === theme.slug);
+                        {themes.map((theme: Theme, index: number) => {
+                            const themeProposals = proposals.filter((p: Proposal) => p.theme === theme.slug);
                             return (
                                 <motion.div
                                     key={theme.slug}
@@ -80,7 +93,7 @@ export default function TemiPage() {
                 <div className="container narrow-container text-center">
                     <h2 className="serif-italic">Come funziona la nostra piattaforma</h2>
                     <p className="mb-8">
-                        Non è una semplice bacheca. Ogni tema è un tavolo di lavoro aperto dove usiamo il rigore dell'analisi per trasformare le idee in proposte attuabili.
+                        Non è una semplice bacheca. Ogni tema è un tavolo di lavoro aperto dove usiamo il rigore dell&apos;analisi per trasformare le idee in proposte attuabili.
                     </p>
                     <div className="steps-grid">
                         <div className="step-item">
@@ -91,7 +104,7 @@ export default function TemiPage() {
                         <div className="step-item">
                             <span className="step-number">2</span>
                             <h4>Proposta</h4>
-                            <p>Elaboriamo soluzioni basate sull'onestà intellettuale e la fattibilità.</p>
+                            <p>Elaboriamo soluzioni basate sull&apos;onestà intellettuale e la fattibilità.</p>
                         </div>
                         <div className="step-item">
                             <span className="step-number">3</span>

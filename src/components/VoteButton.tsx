@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { ThumbsUp } from 'lucide-react';
 
@@ -16,11 +16,7 @@ export default function VoteButton({ proposalId, initialVoteCount }: VoteButtonP
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const supabase = createClient();
 
-    useEffect(() => {
-        checkVoteStatus();
-    }, [proposalId]);
-
-    const checkVoteStatus = async () => {
+    const checkVoteStatus = useCallback(async () => {
         const { data: { user } } = await supabase.auth.getUser();
 
         if (!user) {
@@ -39,7 +35,11 @@ export default function VoteButton({ proposalId, initialVoteCount }: VoteButtonP
             .single();
 
         setHasVoted(!!data);
-    };
+    }, [proposalId, supabase]);
+
+    useEffect(() => {
+        checkVoteStatus();
+    }, [checkVoteStatus]);
 
     const handleVote = async () => {
         if (!isAuthenticated) {
@@ -63,8 +63,9 @@ export default function VoteButton({ proposalId, initialVoteCount }: VoteButtonP
 
             setVoteCount(data.voteCount);
             setHasVoted(!hasVoted);
-        } catch (error: any) {
-            alert(error.message || 'Si è verificato un errore');
+        } catch (error) {
+            const err = error as Error;
+            alert(err.message || 'Si è verificato un errore');
         } finally {
             setLoading(false);
         }

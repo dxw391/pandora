@@ -64,7 +64,6 @@ export default async function NuovaPropostaPage({ params }: { params: Promise<{ 
                         <ProposalForm
                             themeId={dbTheme.id}
                             themeSlug={themeSlug}
-                            themeTitle={theme.title}
                         />
                     </div>
                 </div>

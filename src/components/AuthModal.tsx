@@ -54,8 +54,9 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
                 onClose();
                 window.location.reload();
             }
-        } catch (err: any) {
-            setError(err.message || 'Si è verificato un errore');
+        } catch (err) {
+            const error = err as Error;
+            setError(error.message || 'Si è verificato un errore');
         } finally {
             setLoading(false);
         }
@@ -71,8 +72,9 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
             });
 
             if (error) throw error;
-        } catch (err: any) {
-            setError(err.message || 'Si è verificato un errore');
+        } catch (err) {
+            const error = err as Error;
+            setError(error.message || 'Si è verificato un errore');
         }
     };
 

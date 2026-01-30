@@ -7,10 +7,9 @@ import { Plus, X } from 'lucide-react';
 interface ProposalFormProps {
     themeId: number;
     themeSlug: string;
-    themeTitle: string;
 }
 
-export default function ProposalForm({ themeId, themeSlug, themeTitle }: ProposalFormProps) {
+export default function ProposalForm({ themeId, themeSlug }: ProposalFormProps) {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -64,8 +63,9 @@ export default function ProposalForm({ themeId, themeSlug, themeTitle }: Proposa
 
             // Redirect to theme page with success message
             router.push(`/temi/${themeSlug}?success=proposal_created`);
-        } catch (err: any) {
-            setError(err.message || 'Si è verificato un errore');
+        } catch (err) {
+            const error = err as Error;
+            setError(error.message || 'Si è verificato un errore');
         } finally {
             setLoading(false);
         }

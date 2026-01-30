@@ -3,6 +3,20 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { User, FileText, ThumbsUp, Calendar } from 'lucide-react';
 
+interface VoteWithProposal {
+    id: number;
+    created_at: string;
+    proposals: {
+        id: number;
+        slug: string;
+        title: string;
+        themes: {
+            slug: string;
+            title: string;
+        };
+    };
+}
+
 export default async function ProfiloPage() {
     const supabase = await createClient();
 
@@ -136,7 +150,7 @@ export default async function ProfiloPage() {
                             <h2>Proposte Supportate</h2>
                             {userVotes && userVotes.length > 0 ? (
                                 <div className="proposals-list">
-                                    {userVotes.map((vote: any) => (
+                                    {userVotes.map((vote: VoteWithProposal) => (
                                         <div key={vote.id} className="proposal-list-item">
                                             <div className="proposal-list-header">
                                                 <div>

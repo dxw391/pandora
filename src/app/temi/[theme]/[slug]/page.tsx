@@ -1,19 +1,13 @@
-import React, { useMemo } from 'react';
 import { createClient } from '@/lib/supabase/server';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, CheckCircle2, XCircle, Calendar, Info } from 'lucide-react';
-import * as runtime from 'react/jsx-runtime';
 import VoteButton from '@/components/VoteButton';
 
-const MDXContent = ({ code }: { code: string }) => {
-    const Component = useMemo(() => {
-        const fn = new Function(code);
-        return fn(runtime).default;
-    }, [code]);
-
-    return <Component />;
-};
+interface ProposalArgument {
+    type: 'pro' | 'con';
+    content: string;
+}
 
 export default async function ProposalDetailPage({ params }: { params: Promise<{ theme: string; slug: string }> }) {
     const { theme: themeSlug, slug } = await params;
@@ -41,8 +35,8 @@ export default async function ProposalDetailPage({ params }: { params: Promise<{
         .eq('proposal_id', proposal.id);
 
     // Separate pros and cons
-    const pros = proposal.proposal_arguments?.filter((arg: any) => arg.type === 'pro').map((arg: any) => arg.content) || [];
-    const cons = proposal.proposal_arguments?.filter((arg: any) => arg.type === 'con').map((arg: any) => arg.content) || [];
+    const pros = proposal.proposal_arguments?.filter((arg: ProposalArgument) => arg.type === 'pro').map((arg: ProposalArgument) => arg.content) || [];
+    const cons = proposal.proposal_arguments?.filter((arg: ProposalArgument) => arg.type === 'con').map((arg: ProposalArgument) => arg.content) || [];
 
     return (
         <div className="page-content">
@@ -114,10 +108,10 @@ export default async function ProposalDetailPage({ params }: { params: Promise<{
 
                             <div className="info-card mt-8">
                                 <h4 className="flex items-center gap-2">
-                                    <Info size={18} /> Cos'è il supporto?
+                                    <Info size={18} /> Cos&apos;è il supporto?
                                 </h4>
                                 <p className="text-sm text-secondary">
-                                    Il supporto non è un voto vincolante, ma un segnale che diamo all'associazione sulla priorità percepita dai cittadini.
+                                    Il supporto non è un voto vincolante, ma un segnale che diamo all&apos;associazione sulla priorità percepita dai cittadini.
                                 </p>
                             </div>
                         </div>
