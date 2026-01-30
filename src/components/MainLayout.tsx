@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { Landmark, Menu, X } from 'lucide-react';
+import { createClient } from '@/lib/supabase/client';
+import { User } from '@supabase/supabase-js';
 import CookieBanner from './CookieBanner';
 import AuthModal from './AuthModal';
 import UserMenu from './UserMenu';
@@ -12,13 +14,43 @@ import UserMenu from './UserMenu';
 const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+    const [user, setUser] = useState<User | null>(null);
+    const [loading, setLoading] = useState(true);
+
     const pathname = usePathname();
+    const supabase = createClient();
+
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
         damping: 30,
         restDelta: 0.001
     });
+
+    useEffect(() => {
+        // Auth Listener
+        const getUser = async () => {
+            const { data: { user } } = await supabase.auth.getUser();
+            setUser(user);
+            setLoading(false);
+        };
+
+        getUser();
+
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+            setUser(session?.user ?? null);
+            setLoading(false);
+        });
+
+        // URL Cleanup for Facebook hash
+        if (window.location.hash === '#_=_') {
+            window.history.replaceState
+                ? window.history.replaceState(null, '', window.location.href.split('#')[0])
+                : window.location.hash = '';
+        }
+
+        return () => subscription.unsubscribe();
+    }, [supabase.auth]);
 
     const isActive = (path: string) => pathname === path;
 
@@ -41,8 +73,14 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         <Link href="/temi" className={isActive('/temi') ? 'active' : ''}>Temi</Link>
                         <Link href="/statuto" className={isActive('/statuto') ? 'active' : ''}>Statuto</Link>
                         <Link href="/trasparenza" className={isActive('/trasparenza') ? 'active' : ''}>Trasparenza</Link>
-                        <UserMenu />
-                        <button onClick={() => setIsAuthModalOpen(true)} className="btn-primary">Accedi</button>
+
+                        {!loading && (
+                            user ? (
+                                <UserMenu user={user} />
+                            ) : (
+                                <button onClick={() => setIsAuthModalOpen(true)} className="btn-primary">Accedi</button>
+                            )
+                        )}
                     </nav>
 
                     <button className="mobile-menu-btn" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -63,7 +101,20 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         <Link href="/temi" className={isActive('/temi') ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>Temi</Link>
                         <Link href="/statuto" className={isActive('/statuto') ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>Statuto</Link>
                         <Link href="/trasparenza" className={isActive('/trasparenza') ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>Trasparenza</Link>
-                        <a href="mailto:info@pandora.it" className="btn-primary">Contattaci</a>
+
+                        {!loading && !user && (
+                            <button onClick={() => {
+                                setIsMenuOpen(false);
+                                setIsAuthModalOpen(true);
+                            }} className="btn-primary w-full mt-4">Accedi</button>
+                        )}
+
+                        {/* If user is logged in on mobile, UserMenu acts as a dropdown in desktop, but for mobile we might want a direct link or keeping it simple. 
+                            However, the UserMenu component is built as a dropdown. For mobile, usually you want inline items.
+                            For now, keeping the desktop behavior is safer, OR we render the UserMenu here too. 
+                            The current implementation of UserMenu is click-trigger dropdown. It works on mobile too.
+                            Let's append it or conditionally render the button.
+                        */}
                     </motion.div>
                 )}
             </header>
