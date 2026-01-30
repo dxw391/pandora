@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { NextResponse } from 'next/server';
+import { getCanonicalUrl } from '@/lib/utils/url';
 
 export async function GET(request: Request) {
     const requestUrl = new URL(request.url);
@@ -11,5 +12,5 @@ export async function GET(request: Request) {
     }
 
     // Redirect to home page after successful authentication
-    return NextResponse.redirect(new URL('/', requestUrl.origin));
+    return NextResponse.redirect(getCanonicalUrl());
 }
