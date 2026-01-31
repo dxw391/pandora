@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, ThumbsUp } from 'lucide-react';
+import CreateProposalButton from '@/components/CreateProposalButton';
 import * as runtime from 'react/jsx-runtime';
 import { themes } from 'content';
 
@@ -92,9 +93,9 @@ export default async function ThemeDetailPage({ params }: { params: Promise<{ th
                             <h2>Proposte Civiche</h2>
                             <p>Queste sono le azioni concrete che stiamo analizzando o promuovendo.</p>
                         </div>
-                        <Link href={`/temi/${slug}/nuova-proposta`} className="btn-primary">
+                        <CreateProposalButton themeSlug={slug} className="btn-primary">
                             Proponi Iniziativa
-                        </Link>
+                        </CreateProposalButton>
                     </div>
 
                     <div className="proposals-grid">
@@ -120,9 +121,9 @@ export default async function ThemeDetailPage({ params }: { params: Promise<{ th
                         {proposalsWithVotes.length === 0 && (
                             <div className="text-center w-full py-20">
                                 <p className="text-secondary italic">Non ci sono ancora proposte per questo tema.</p>
-                                <Link href={`/temi/${slug}/nuova-proposta`} className="btn-primary mt-4 inline-block">
+                                <CreateProposalButton themeSlug={slug} className="btn-primary mt-4 inline-block">
                                     Proponi la Prima Iniziativa
-                                </Link>
+                                </CreateProposalButton>
                             </div>
                         )}
                     </div>

@@ -189,3 +189,64 @@ INSERT INTO public.themes (slug, title, icon, description, body) VALUES
 ('ambiente', 'Ambiente', 'Leaf', 'Analisi e proposte per la tutela del territorio, la gestione dei rifiuti e la sostenibilità ambientale a Solofra.', 'L''ambiente è il nostro patrimonio più prezioso. In questa sezione analizziamo lo stato del territorio e proponiamo soluzioni concrete per una Solofra più verde e vivibile.'),
 ('mobilita', 'Mobilità', 'Car', 'Idee per migliorare la viabilità cittadina, promuovere il trasporto pubblico e la mobilità sostenibile.', 'Come ci muoviamo definisce la qualità della nostra vita. Analizziamo i flussi di traffico e proponiamo alternative per ridurre l''inquinamento e lo stress da traffico.'),
 ('scuola', 'Scuola', 'GraduationCap', 'Monitoraggio dell''edilizia scolastica e proposte per servizi integrativi e formativi per i più giovani.', 'La scuola è il cuore del nostro futuro. Ci impegniamo a monitorare lo stato degli edifici e a proporre iniziative che arricchiscano l''offerta formativa locale.');
+
+-- ============================================
+-- 9. PODCASTS TABLE
+-- ============================================
+CREATE TABLE public.podcasts (
+  id SERIAL PRIMARY KEY,
+  slug TEXT UNIQUE NOT NULL,
+  title TEXT NOT NULL,
+  description TEXT,
+  body TEXT,
+  duration TEXT,
+  audio_url TEXT,
+  cover_url TEXT,
+  is_featured BOOLEAN DEFAULT FALSE,
+  is_published BOOLEAN DEFAULT FALSE,
+  published_at TIMESTAMP WITH TIME ZONE,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Enable Row Level Security
+ALTER TABLE public.podcasts ENABLE ROW LEVEL SECURITY;
+
+-- Policies for podcasts (published podcasts are viewable by everyone)
+CREATE POLICY "Published podcasts are viewable by everyone"
+  ON public.podcasts FOR SELECT
+  USING (is_published = true);
+
+-- Index for performance
+CREATE INDEX idx_podcasts_slug ON public.podcasts(slug);
+CREATE INDEX idx_podcasts_is_published ON public.podcasts(is_published);
+CREATE INDEX idx_podcasts_published_at ON public.podcasts(published_at DESC);
+
+-- ============================================
+-- SEED DATA: Initial Podcast Episode
+-- ============================================
+INSERT INTO public.podcasts (slug, title, description, body, duration, is_featured, is_published, published_at) VALUES
+('episodio-pilota', 'Episodio Pilota: Apriamo il Vaso', 
+'Nel primo episodio del podcast di Pandora parliamo della nascita dell''osservatorio civico, del nostro metodo di analisi e di cosa aspettarsi dalle prossime puntate.',
+'# Episodio Pilota: Apriamo il Vaso
+
+Benvenuti al primo episodio del podcast di Pandora, l''osservatorio civico di Solofra.
+
+In questa puntata inaugurale parliamo di:
+
+- **Chi siamo**: la nascita di Pandora e la nostra missione
+- **Il nostro metodo**: come analizziamo documenti e atti amministrativi
+- **Cosa aspettarsi**: i temi che affronteremo nelle prossime puntate
+- **Solofra**: un primo sguardo sui temi caldi del nostro territorio
+
+## Perché un podcast?
+
+Il podcast è uno strumento diretto, senza filtri, che ci permette di raccontare in profondità ciò che un post sui social non può contenere. Vogliamo creare uno spazio di riflessione, non di polemica.
+
+## Prossimi episodi
+
+Nelle prossime settimane parleremo di bilancio comunale, trasparenza amministrativa e delle proposte dei cittadini.
+
+**Buon ascolto!**',
+'32:15', true, true, NOW());
+

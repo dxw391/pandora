@@ -43,7 +43,7 @@ export default async function NuovaPropostaPage({ params }: { params: Promise<{ 
                     </Link>
                     <h1>Proponi una Nuova Iniziativa</h1>
                     <p className="subtitle">
-                        Condividi la tua idea per migliorare {theme.title} a Solofra
+                        Condividi la tua idea per migliorare {theme.title}
                     </p>
                 </div>
             </section>

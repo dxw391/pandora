@@ -100,7 +100,7 @@ export default async function ProposalDetailPage({ params }: { params: Promise<{
                         <div className="proposal-sidebar">
                             <div className="interaction-card">
                                 <h3>Supporta questa proposta</h3>
-                                <p>Credi che questa iniziativa sia prioritaria per Solofra? Faccelo sapere con un supporto.</p>
+                                <p>Credi che questa iniziativa sia prioritaria? Faccelo sapere con un supporto.</p>
                                 <div className="support-actions mt-6">
                                     <VoteButton proposalId={proposal.id} initialVoteCount={voteCount || 0} />
                                 </div>

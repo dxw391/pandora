@@ -47,6 +47,24 @@ const proposals = defineCollection({
         .transform(data => ({ ...data, permalink: `/temi/${data.theme}/${data.slug}` }))
 })
 
+const podcasts = defineCollection({
+    name: 'Podcast',
+    pattern: 'podcasts/**/*.md',
+    schema: s
+        .object({
+            title: s.string().max(99),
+            slug: s.path().transform(p => p.replace(/^podcasts\//, '')),
+            date: s.isodate(),
+            description: s.string().max(999).optional(),
+            duration: s.string().optional(), // es. "45:30"
+            audio_url: s.string().optional(), // URL del file audio
+            cover: s.string().optional(), // URL immagine di copertina
+            featured: s.boolean().default(false),
+            body: s.mdx(),
+        })
+        .transform(data => ({ ...data, permalink: `/blog/podcast/${data.slug}` }))
+})
+
 export default defineConfig({
     root: 'content',
     output: {
@@ -56,7 +74,7 @@ export default defineConfig({
         name: '[name]-[hash].[ext]',
         clean: true
     },
-    collections: { posts, themes, proposals },
+    collections: { posts, themes, proposals, podcasts },
     mdx: {
         rehypePlugins: [],
         remarkPlugins: []

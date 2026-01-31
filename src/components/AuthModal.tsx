@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { X } from 'lucide-react';
+import { useUI } from './providers/UIProvider';
 
 interface AuthModalProps {
     isOpen: boolean;
@@ -10,7 +11,8 @@ interface AuthModalProps {
 }
 
 export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
-    const [mode, setMode] = useState<'login' | 'signup'>('login');
+    const { authMode } = useUI();
+    const [mode, setMode] = useState<'login' | 'signup'>(authMode);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [fullName, setFullName] = useState('');
@@ -19,6 +21,12 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
     const [message, setMessage] = useState<string | null>(null);
 
     const supabase = createClient();
+
+    React.useEffect(() => {
+        if (isOpen) {
+            setMode(authMode);
+        }
+    }, [isOpen, authMode]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();

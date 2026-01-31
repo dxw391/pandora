@@ -2,9 +2,12 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Eye, Shield, MessageSquare, ArrowRight, Search, ChevronDown, Send } from 'lucide-react';
+import { ChevronDown, Send } from 'lucide-react';
+import { useUI } from '@/components/providers/UIProvider';
 
 export default function HomePage() {
+  const { openAuthModal } = useUI();
+
   return (
     <>
       <section className="hero">
@@ -14,19 +17,25 @@ export default function HomePage() {
           transition={{ duration: 0.8 }}
           className="container hero-content"
         >
-          <span className="badge">Osservatorio Civico Solofra</span>
-          <h1>Pandora</h1>
-          <p className="hero-subtitle">
-            Niente di personale. Solo trasparenza e onestà intellettuale per Solofra e il territorio.
-          </p>
-          <motion.div
+          <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 1 }}
-            className="scroll-indicator"
+            transition={{ delay: 0.2 }}
+            className="badge"
+            style={{ color: 'var(--brand-primary)', fontWeight: 800, letterSpacing: '0.2em' }}
           >
-            <ChevronDown size={32} />
-          </motion.div>
+            Osservatorio Civico
+          </motion.span>
+          <h1>Niente di personale</h1>
+
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 1 }}
+          className="scroll-indicator"
+        >
+          <ChevronDown size={32} />
         </motion.div>
       </section>
 
@@ -47,68 +56,8 @@ export default function HomePage() {
               transition={{ delay: 0.2 }}
               className="large-text"
             >
-              &quot;Pandora è un osservatorio civico nato a Solofra per promuovere la trasparenza e l&apos;onestà intellettuale. Analizziamo i fatti del nostro territorio, approfondiamo i documenti e promuoviamo una discussione politica libera da slogan e pregiudizi.&quot;
+              &quot;Pandora mette insieme le persone e crea iniziative e progetti per migliorare la qualità della discussione politica.
             </motion.p>
-          </div>
-        </div>
-      </section>
-
-      <section id="obiettivi" className="values-section">
-        <div className="container">
-          <div className="section-header">
-            <h2>Cosa ci guida</h2>
-            <p>Crediamo che la chiarezza sia il primo passo per una buona amministrazione.</p>
-          </div>
-          <div className="values-grid">
-            <ValueCard
-              icon={<Eye size={32} />}
-              title="Trasparenza"
-              description="Rendiamo accessibili le informazioni e i processi decisionali che riguardano la collettività."
-            />
-            <ValueCard
-              icon={<Shield size={32} />}
-              title="Onestà Intellettuale"
-              description="Analizziamo la realtà per quella che è, senza piegarla a interessi di parte o ideologie."
-            />
-            <ValueCard
-              icon={<MessageSquare size={32} />}
-              title="Libero Dibattito"
-              description="Promuoviamo un confronto basato su dati e ragionamenti, lontano dagli slogan superficiali."
-            />
-          </div>
-        </div>
-      </section>
-
-      <section id="metodo" className="method-section">
-        <div className="container method-grid">
-          <div className="method-image">
-            <div className="glass-card">
-              <Search size={48} className="icon-gold" />
-              <h3>Il nostro metodo</h3>
-              <ul>
-                <li>
-                  <ArrowRight size={16} />
-                  <span>Analisi dei fatti di Solofra e del territorio</span>
-                </li>
-                <li>
-                  <ArrowRight size={16} />
-                  <span>Studio approfondito di atti e documenti</span>
-                </li>
-                <li>
-                  <ArrowRight size={16} />
-                  <span>Divulgazione chiara e imparziale</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="method-text">
-            <h2>Oltre il pregiudizio</h2>
-            <p>
-              In un&apos;epoca di polarizzazione estrema, Pandora si pone come un filtro critico. Non ci interessa la lotta politica fine a se stessa, ma la qualità della discussione pubblica.
-            </p>
-            <p>
-              Ogni nostra analisi parte dai documenti. Perché i fatti non hanno colore politico, ma hanno bisogno di essere portati alla luce con competenza e rigore.
-            </p>
           </div>
         </div>
       </section>
@@ -125,9 +74,10 @@ export default function HomePage() {
 
       <section className="cta-section">
         <div className="container text-center">
-          <h2 className="serif-italic">&quot;Niente di personale.&quot;</h2>
-          <p>Unisciti alla nostra visione di una politica più trasparente.</p>
-          <button className="btn-secondary">Diventa Socio</button>
+          <h2 style={{ textTransform: 'lowercase', fontSize: '5rem', opacity: 0.1, position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', pointerEvents: 'none', width: '100%', textAlign: 'center' }}>pandora</h2>
+          <h2 className="serif-italic" style={{ color: 'var(--bg-dark)', opacity: 0.8 }}>&quot;Niente di personale.&quot;</h2>
+          <p style={{ color: 'var(--bg-dark)' }}>Unisciti alla nostra visione di una politica più trasparente.</p>
+          <button className="btn-secondary" onClick={() => openAuthModal('signup')}>Diventa Socio</button>
         </div>
       </section>
     </>
@@ -196,13 +146,3 @@ const ContactForm: React.FC = () => {
   );
 };
 
-const ValueCard: React.FC<{ icon: React.ReactNode, title: string, description: string }> = ({ icon, title, description }) => (
-  <motion.div
-    whileHover={{ y: -5 }}
-    className="value-card"
-  >
-    <div className="value-icon">{icon}</div>
-    <h3>{title}</h3>
-    <p>{description}</p>
-  </motion.div>
-);
