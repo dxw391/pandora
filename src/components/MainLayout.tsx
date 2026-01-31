@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, useScroll, useSpring } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Youtube, Facebook, Instagram } from 'lucide-react';
 import PandoraIcon from './PandoraIcon';
 import { createClient } from '@/lib/supabase/client';
 import { User } from '@supabase/supabase-js';
@@ -165,9 +165,18 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                             </div>
                             <div className="link-group">
                                 <h4>Social</h4>
-                                <a href="#">Facebook</a>
-                                <a href="#">Instagram</a>
-                                <a href="#">Twitter</a>
+                                <a href="https://www.facebook.com/profile.php?id=61586999413385" target="_blank" rel="noopener noreferrer" className="social-link">
+                                    <Facebook size={18} />
+                                    <span>Facebook</span>
+                                </a>
+                                <a href="https://www.instagram.com/pandoranientedipersonale/" target="_blank" rel="noopener noreferrer" className="social-link">
+                                    <Instagram size={18} />
+                                    <span>Instagram</span>
+                                </a>
+                                <a href="https://www.youtube.com/@PandoraNienteDiPersonale" target="_blank" rel="noopener noreferrer" className="social-link">
+                                    <Youtube size={18} />
+                                    <span>YouTube</span>
+                                </a>
                             </div>
                         </div>
                     </div>

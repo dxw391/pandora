@@ -479,6 +479,16 @@ section {
   transform: translateX(4px);
 }
 
+.social-link {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+}
+
+.social-link:hover {
+  color: var(--brand-primary) !important;
+}
+
 .text-center {
   text-align: center;
 }
