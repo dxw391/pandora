@@ -78,7 +78,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
                     <div className="container header-content">
                         <Link href="/" className="logo">
-                            <PandoraIcon fill="var(--bg-dark)" stroke="var(--brand-primary)" size={36} strokeWidth={8} />
+                            <PandoraIcon stroke="var(--bg-dark)" fill="var(--brand-primary)" size={36} strokeWidth={8} />
                             <span className="logo-text">pandora</span>
                         </Link>
 
