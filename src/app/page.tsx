@@ -56,7 +56,7 @@ export default function HomePage() {
               transition={{ delay: 0.2 }}
               className="large-text"
             >
-              &quot;Pandora mette insieme le persone e crea iniziative e progetti per migliorare la qualità della discussione politica.
+              &quot;Pandora mette insieme le persone e crea iniziative e progetti per migliorare la qualità della discussione politica.&quot;
             </motion.p>
           </div>
         </div>
