@@ -1,54 +1,28 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Clock, Headphones } from 'lucide-react';
-import ReactMarkdown from 'react-markdown';
-import type { Podcast } from '@/app/api/podcasts/route';
+import { podcasts } from 'content';
+import * as runtime from 'react/jsx-runtime';
+
+// Componente per renderizzare l'MDX compilato da Velite
+const MDXContent = ({ code }: { code: string }) => {
+    const Component = React.useMemo(() => {
+        const fn = new Function(code);
+        return fn(runtime).default;
+    }, [code]);
+
+    return <Component />;
+};
 
 export default function PodcastEpisodePage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = React.use(params);
-    const [podcast, setPodcast] = useState<Podcast | null>(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
+    const podcast = podcasts.find((p) => p.slug === slug);
 
-    useEffect(() => {
-        async function fetchPodcast() {
-            try {
-                const response = await fetch(`/api/podcasts/${slug}`);
-                const result = await response.json();
-                if (result.success) {
-                    setPodcast(result.data);
-                } else {
-                    setError(true);
-                }
-            } catch (err) {
-                console.error('Error fetching podcast:', err);
-                setError(true);
-            } finally {
-                setLoading(false);
-            }
-        }
-        fetchPodcast();
-    }, [slug]);
-
-    if (loading) {
-        return (
-            <div className="page-content">
-                <section className="podcast-episode-header">
-                    <div className="container">
-                        <div className="text-center" style={{ padding: '100px 0' }}>
-                            <p style={{ color: 'rgba(255,255,255,0.7)' }}>Caricamento episodio...</p>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        );
-    }
-
-    if (error || !podcast) {
+    if (!podcast) {
         notFound();
     }
 
@@ -73,7 +47,7 @@ export default function PodcastEpisodePage({ params }: { params: Promise<{ slug:
                         <div className="episode-meta">
                             <span className="meta-item">
                                 <Calendar size={14} />
-                                {new Date(podcast.published_at || podcast.created_at).toLocaleDateString('it-IT', {
+                                {new Date(podcast.date).toLocaleDateString('it-IT', {
                                     year: 'numeric',
                                     month: 'long',
                                     day: 'numeric'
@@ -108,7 +82,7 @@ export default function PodcastEpisodePage({ params }: { params: Promise<{ slug:
                         transition={{ delay: 0.3 }}
                         className="prose"
                     >
-                        <ReactMarkdown>{podcast.body || ''}</ReactMarkdown>
+                        <MDXContent code={podcast.body} />
                     </motion.div>
 
                     <div className="post-footer mt-20">

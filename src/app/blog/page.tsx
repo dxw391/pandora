@@ -4,8 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Calendar, ArrowRight, Play, Clock, Mic, FileText, Headphones } from 'lucide-react';
-import { posts } from 'content'
-import type { Podcast } from '@/app/api/podcasts/route';
+import { posts, podcasts } from 'content'
 
 type TabType = 'all' | 'podcast' | 'blog';
 
@@ -21,35 +20,15 @@ interface ContentItem {
 
 export default function BlogPodcastPage() {
     const [activeTab, setActiveTab] = useState<TabType>('all');
-    const [podcasts, setPodcasts] = useState<Podcast[]>([]);
-    const [loading, setLoading] = useState(true);
-
-    // Fetch podcasts from API
-    useEffect(() => {
-        async function fetchPodcasts() {
-            try {
-                const response = await fetch('/api/podcasts');
-                const result = await response.json();
-                if (result.success) {
-                    setPodcasts(result.data);
-                }
-            } catch (error) {
-                console.error('Error fetching podcasts:', error);
-            } finally {
-                setLoading(false);
-            }
-        }
-        fetchPodcasts();
-    }, []);
 
     // Ordina i post per data decrescente
     const sortedPosts = [...posts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     const sortedPodcasts = [...podcasts].sort((a, b) =>
-        new Date(b.published_at || b.created_at).getTime() - new Date(a.published_at || a.created_at).getTime()
+        new Date(b.date).getTime() - new Date(a.date).getTime()
     );
 
-    // Featured podcast (primo con is_featured = true o il più recente)
-    const featuredPodcast = sortedPodcasts.find(p => p.is_featured) || sortedPodcasts[0];
+    // Featured podcast (primo con featured = true o il più recente)
+    const featuredPodcast = sortedPodcasts.find(p => p.featured) || sortedPodcasts[0];
 
     // Contenuti combinati per la vista 'all'
     const allContent: ContentItem[] = [
@@ -64,10 +43,10 @@ export default function BlogPodcastPage() {
         ...sortedPodcasts.map(p => ({
             slug: p.slug,
             title: p.title,
-            description: p.description,
-            date: p.published_at || p.created_at,
+            description: p.description || null,
+            date: p.date,
             type: 'podcast' as const,
-            permalink: `/blog/podcast/${p.slug}`,
+            permalink: p.permalink,
             duration: p.duration
         }))
     ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -91,7 +70,7 @@ export default function BlogPodcastPage() {
             </section>
 
             {/* Featured Podcast Hero */}
-            {!loading && featuredPodcast && (
+            {featuredPodcast && (
                 <section className="podcast-hero-section">
                     <div className="container">
                         <motion.div
@@ -108,7 +87,7 @@ export default function BlogPodcastPage() {
                             <div className="podcast-hero-meta">
                                 <span className="podcast-meta-item">
                                     <Calendar size={14} />
-                                    {new Date(featuredPodcast.published_at || featuredPodcast.created_at).toLocaleDateString('it-IT', {
+                                    {new Date(featuredPodcast.date).toLocaleDateString('it-IT', {
                                         year: 'numeric',
                                         month: 'long',
                                         day: 'numeric'
@@ -158,15 +137,8 @@ export default function BlogPodcastPage() {
                         </button>
                     </div>
 
-                    {/* Loading State */}
-                    {loading && (
-                        <div className="text-center" style={{ padding: '60px 0' }}>
-                            <p>Caricamento contenuti...</p>
-                        </div>
-                    )}
-
                     {/* Grid Layout stile giornale */}
-                    {!loading && activeTab === 'all' && (
+                    {activeTab === 'all' && (
                         <div className="newspaper-grid">
                             {allContent.map((item, index) => (
                                 <motion.article
@@ -209,7 +181,7 @@ export default function BlogPodcastPage() {
                     )}
 
                     {/* Solo Podcast */}
-                    {!loading && activeTab === 'podcast' && (
+                    {activeTab === 'podcast' && (
                         <div className="podcast-grid">
                             {sortedPodcasts.map((podcast, index) => (
                                 <motion.article
@@ -227,7 +199,7 @@ export default function BlogPodcastPage() {
                                         <div className="post-meta">
                                             <span className="post-date">
                                                 <Calendar size={14} />
-                                                {new Date(podcast.published_at || podcast.created_at).toLocaleDateString('it-IT', {
+                                                {new Date(podcast.date).toLocaleDateString('it-IT', {
                                                     year: 'numeric',
                                                     month: 'long',
                                                     day: 'numeric'
@@ -258,7 +230,7 @@ export default function BlogPodcastPage() {
                     )}
 
                     {/* Solo Blog */}
-                    {!loading && activeTab === 'blog' && (
+                    {activeTab === 'blog' && (
                         <div className="blog-posts-grid">
                             {sortedPosts.map((post, index) => (
                                 <motion.article
