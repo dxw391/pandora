@@ -71,7 +71,7 @@ export default function BlogPodcastPage() {
 
             {/* Featured Podcast Hero */}
             {featuredPodcast && (
-                <section className="podcast-hero-section">
+                <section className="podcast-hero-section mt-5">
                     <div className="container">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -103,7 +103,7 @@ export default function BlogPodcastPage() {
                             <div className="podcast-hero-actions">
                                 <Link href={`/blog/podcast/${featuredPodcast.slug}`} className="btn-primary podcast-play-btn">
                                     <Play size={18} />
-                                    Ascolta Ora
+                                    Ascolta ora
                                 </Link>
                             </div>
                         </motion.div>
