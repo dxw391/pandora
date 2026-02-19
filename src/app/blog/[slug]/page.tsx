@@ -28,7 +28,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
 
     return (
         <div className="page-content">
-            <section className="page-header pb-0">
+            <section className="page-header pb-3">
                 <div className="container">
                     <Link href="/blog" className="link-arrow mb-8 inline-flex items-center gap-2 text-sm">
                         <ArrowLeft size={16} /> Torna al Blog
