@@ -1,6 +1,6 @@
 ---
 title: Vi presentiamo "Niente di personale"
-date: 2026-01-29
+date: 2026-02-19
 description: Il nostro podcast dedicato all'approfondimento con interviste a esperti e protagonisti.
 ---
 
