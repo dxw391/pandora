@@ -17,7 +17,7 @@ export async function POST(request: Request) {
         }
 
         const { error } = await resend.emails.send({
-            from: 'Pandora <onboarding@resend.dev>', // Default in test, cambierà con dominio custom
+            from: 'Pandora <no-reply@associazionepandora.it>',
             to: [process.env.CONTACT_EMAIL || 'aureliopetrone@gmail.com'], // Fallback email
             subject: `Nuovo messaggio da ${name}`,
             replyTo: email,
@@ -31,10 +31,10 @@ export async function POST(request: Request) {
         });
 
         if (error) {
-            console.error('Errore Resend:', error);
+            console.error('Errore Resend dettagliato:', JSON.stringify(error, null, 2));
             return NextResponse.json({
                 success: false,
-                message: 'Errore nell\'invio del messaggio.'
+                message: `Errore nell'invio del messaggio: ${error.message || 'Errore del servizio email'}`
             }, { status: 400 });
         }
 
