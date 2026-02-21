@@ -22,7 +22,7 @@ Ecco perché abbiamo scelto proprio il Referendum per la nostra **prima puntata*
 
 Per dimostrare che un confronto alto e rispettoso è possibile, abbiamo invitato al nostro tavolo inaugurale voci e storie molto diverse tra loro:
 
-* **Romolo Cennamo**, avvocato penalista;
+* **Romolo Clemente**, avvocato penalista;
 * **Matteo Hallissey**, presidente di Radicali Italiani e +Europa;
 * **Lorenzo Pacini**, assessore del Comune di Milano;
 * **Francesco Pisano**, rappresentante di Forza Italia giovani.
