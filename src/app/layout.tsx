@@ -15,8 +15,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Pandora — Osservatorio Civico",
-  description: "Osservatorio civico per la trasparenza e l'onestà intellettuale nel territorio. Analizziamo i fatti, approfondiamo i documenti e promuoviamo una discussione politica libera da slogan e pregiudizi.",
+  title: "Pandora — Oltre il rumore",
+  description: "Uno spazio indipendente per capire davvero. Analizziamo i documenti, smontiamo la burocrazia e costruiamo un dibattito basato solo sulla realtà.",
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-icon.png",

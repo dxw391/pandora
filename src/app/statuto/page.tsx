@@ -14,9 +14,9 @@ export default function StatutoPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                     >
-                        Lo Statuto
+                        Le nostre regole
                     </motion.h1>
-                    <p className="subtitle">Le regole che garantiscono la nostra indipendenza e integrità.</p>
+                    <p className="subtitle">Come garantiamo la nostra autonomia.</p>
                 </div>
             </section>
 

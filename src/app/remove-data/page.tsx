@@ -22,7 +22,7 @@ export default function RemoveDataPage() {
                     <div className="legal-block">
                         <h2>Procedura di Cancellazione</h2>
                         <p>
-                            L&apos;associazione &quot;Pandora - Osservatorio Civico&quot; riconosce il tuo diritto alla cancellazione dei dati personali, in conformità con le normative vigenti sulla privacy.
+                            L&apos;associazione culturale &quot;Pandora&quot; riconosce il tuo diritto alla cancellazione dei dati personali, in conformità con le normative vigenti sulla privacy.
                         </p>
                         <p>
                             Se desideri che i tuoi dati personali vengano eliminati dai nostri sistemi, puoi farne richiesta inviando una mail all&apos;amministratore all&apos;indirizzo:

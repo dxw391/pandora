@@ -13,9 +13,9 @@ export default function ChiSiamoPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                     >
-                        Chi Siamo
+                        Chi c&apos;è dietro Pandora
                     </motion.h1>
-                    <p className="subtitle">Un gruppo di cittadini uniti dall&apos;amore per la propria comunità e dalla voglia di chiarezza.</p>
+                    <p className="subtitle">Competenze in rete, senza etichette.</p>
                 </div>
             </section>
 
@@ -24,10 +24,10 @@ export default function ChiSiamoPage() {
                     <div className="about-text">
                         <h2>La nostra storia</h2>
                         <p>
-                            Pandora nasce dall&apos;esigenza di superare la narrazione politica fatta di soli slogan. Sentivamo il bisogno di uno spazio dove i fatti potessero essere analizzati con freddezza e onestà intellettuale, lontano dalle passioni di parte che spesso offuscano il giudizio.
+                            Siamo una community indipendente. Nessuno schieramento, nessuna fazione: siamo professionisti e cittadini che scelgono di mettere le proprie esperienze in condivisione per capire meglio la realtà che ci circonda.
                         </p>
                         <p>
-                            Non siamo un partito, né siamo legati a correnti politiche. Siamo un osservatorio civico: guardiamo, studiamo, e riportiamo ciò che i documenti dicono, partendo dalle sfide del nostro territorio per promuovere una visione civica più ampia.
+                            Non cerchiamo follower passivi. Vogliamo costruire un network attivo, un gruppo capace di organizzarsi agilmente sui temi che contano di volta in volta, portando al tavolo chi ha davvero le competenze per parlarne.
                         </p>
                     </div>
                     <div className="about-stats-grid">
@@ -39,7 +39,7 @@ export default function ChiSiamoPage() {
                         <div className="stat-card">
                             <Target size={40} className="icon-gold" />
                             <h3>Obiettivo</h3>
-                            <p>Migliorare l&apos;amministrazione attraverso la consapevolezza dei cittadini.</p>
+                            <p>Elevare lo sguardo: collegare il nostro territorio alle grandi questioni globali.</p>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@ export default function ChiSiamoPage() {
             <section className="team-section bg-secondary">
                 <div className="container">
                     <div className="section-header">
-                        <h2>L&apos;Associazione</h2>
+                        <h2>Il nostro Network</h2>
                         <p>Le persone che rendono possibile Pandora ogni giorno.</p>
                     </div>
                     <div className="team-grid">

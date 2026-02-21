@@ -22,7 +22,7 @@ export default function PrivacyPolicyPage() {
                     <div className="legal-block">
                         <h2>1. Titolare del Trattamento</h2>
                         <p>
-                            L&apos;associazione &quot;Pandora - Osservatorio Civico&quot;, con sede legale in [Indirizzo Placeholder], è il Titolare del trattamento dei dati personali raccolti attraverso questo sito. Puoi contattarci per qualsiasi informazione riguardante i tuoi dati all&apos;indirizzo email: privacy@pandora.it.
+                            L&apos;associazione culturale &quot;Pandora&quot;, con sede legale in [Indirizzo Placeholder], è il Titolare del trattamento dei dati personali raccolti attraverso questo sito. Puoi contattarci per qualsiasi informazione riguardante i tuoi dati all&apos;indirizzo email: privacy@pandora.it.
                         </p>
                     </div>
                     <div className="legal-block">

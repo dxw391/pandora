@@ -73,7 +73,7 @@ export default async function TemiPage() {
                     <span className="badge">Politica Attiva</span>
                     <h1>Temi & Proposte</h1>
                     <p className="subtitle">
-                        Partecipa al futuro della comunità. Analizziamo i problemi e costruiamo insieme soluzioni concrete.
+                        Studiamo le carte e le traduciamo. Dalla burocrazia al mondo reale, perché capire è il primo passo per cambiare le cose.
                     </p>
                 </div>
             </section>
@@ -88,7 +88,7 @@ export default async function TemiPage() {
                 <div className="container narrow-container text-center">
                     <h2 className="serif-italic">Come funziona la nostra piattaforma</h2>
                     <p className="mb-8">
-                        Non è una semplice bacheca. Ogni tema è un tavolo di lavoro aperto dove usiamo il rigore dell&apos;analisi per trasformare le idee in proposte attuabili.
+                        La nostra scatola degli attrezzi. Qui decodifichiamo il linguaggio incomprensibile delle istituzioni e trasformiamo i numeri in informazioni chiare.
                     </p>
                     <div className="steps-grid">
                         <div className="step-item">

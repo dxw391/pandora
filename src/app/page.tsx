@@ -24,7 +24,7 @@ export default function HomePage() {
             className="badge"
             style={{ color: 'var(--brand-primary)', fontWeight: 800, letterSpacing: '0.2em' }}
           >
-            Osservatorio Civico
+            Spazio Indipendente
           </motion.span>
           <h1>Niente di personale</h1>
 
@@ -47,7 +47,7 @@ export default function HomePage() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
             >
-              La nostra missione
+              Il nostro Perché
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -56,7 +56,7 @@ export default function HomePage() {
               transition={{ delay: 0.2 }}
               className="large-text"
             >
-              &quot;Pandora mette insieme le persone e crea iniziative e progetti per migliorare la qualità della discussione politica.&quot;
+              &quot;Siamo stanchi delle solite discussioni basate sul nulla e delle etichette. Pandora è uno spazio indipendente nato per scoperchiare la narrazione preconfezionata. Leggiamo le carte, studiamo i numeri e ci facciamo la nostra idea. Nessuno schieramento, solo la voglia di alzare il livello del confronto.&quot;
             </motion.p>
           </div>
         </div>
@@ -65,8 +65,8 @@ export default function HomePage() {
       <section className="contact-form-section bg-secondary" id="contatti">
         <div className="container narrow-container">
           <div className="section-header">
-            <h2>Contattaci</h2>
-            <p>Hai domande o vuoi collaborare con noi?</p>
+            <h2>Unisciti al network</h2>
+            <p>Hai competenze su transizione ecologica o mobilità? O vuoi solo darci una mano? Scrivici.</p>
           </div>
           <ContactForm />
         </div>
@@ -75,8 +75,8 @@ export default function HomePage() {
       <section className="cta-section">
         <div className="container text-center">
           <h2 style={{ textTransform: 'lowercase', fontSize: '5rem', opacity: 0.1, position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', pointerEvents: 'none', width: '100%', textAlign: 'center' }}>pandora</h2>
-          <h2 className="serif-italic" style={{ color: 'var(--bg-dark)', opacity: 0.8 }}>&quot;Niente di personale.&quot;</h2>
-          <p style={{ color: 'var(--bg-dark)' }}>Unisciti alla nostra visione di una politica più trasparente.</p>
+          <h2 className="serif-italic" style={{ color: 'var(--bg-dark)', opacity: 0.8 }}>Oltre il rumore.</h2>
+          <p style={{ color: 'var(--bg-dark)' }}>Costruiamo un network aperto, senza etichette.</p>
           <button className="btn-secondary" onClick={() => openAuthModal('signup')}>Diventa Socio</button>
         </div>
       </section>
