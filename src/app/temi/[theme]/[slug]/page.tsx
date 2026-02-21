@@ -4,12 +4,43 @@ import Link from 'next/link';
 import { ArrowLeft, CheckCircle2, XCircle, Calendar, Info } from 'lucide-react';
 import VoteButton from '@/components/VoteButton';
 
+import { Metadata } from 'next';
+
 interface ProposalArgument {
     type: 'pro' | 'con';
     content: string;
 }
 
-export default async function ProposalDetailPage({ params }: { params: Promise<{ theme: string; slug: string }> }) {
+interface ProposalDetailPageProps {
+    params: Promise<{ theme: string; slug: string }>;
+}
+
+export async function generateMetadata({ params }: ProposalDetailPageProps): Promise<Metadata> {
+    const { slug } = await params;
+    const supabase = await createClient();
+
+    const { data: proposal } = await supabase
+        .from('proposals')
+        .select('title, description')
+        .eq('slug', slug)
+        .single();
+
+    if (!proposal) {
+        return {};
+    }
+
+    return {
+        title: `${proposal.title} — Proposte Pandora`,
+        description: proposal.description,
+        openGraph: {
+            title: proposal.title,
+            description: proposal.description || '',
+            type: 'article',
+        }
+    };
+}
+
+export default async function ProposalDetailPage({ params }: ProposalDetailPageProps) {
     const { theme: themeSlug, slug } = await params;
     const supabase = await createClient();
 

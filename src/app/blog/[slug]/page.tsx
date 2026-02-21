@@ -1,25 +1,43 @@
-"use client";
-
-import React, { useMemo } from 'react';
+import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
-import * as runtime from 'react/jsx-runtime';
 import { posts } from 'content';
+import MDXRenderer from '@/components/MDXRenderer';
+import { Metadata } from 'next';
 
-// Componente per renderizzare l'MDX compilato da Velite
-const MDXContent = ({ code }: { code: string }) => {
-    const Component = useMemo(() => {
-        const fn = new Function(code);
-        return fn(runtime).default;
-    }, [code]);
+interface BlogPostPageProps {
+    params: Promise<{ slug: string }>;
+}
 
-    return <Component />;
-};
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+    const { slug } = await params;
+    const post = posts.find((p) => p.slug === slug);
 
-export default function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
-    const { slug } = React.use(params);
+    if (!post) {
+        return {};
+    }
+
+    return {
+        title: `${post.title} — Pandora`,
+        description: post.description,
+        openGraph: {
+            title: post.title,
+            description: post.description || '',
+            type: 'article',
+            publishedTime: post.date,
+            url: `https://pandora.it/blog/${post.slug}`, // Assumo url base, correggerò se necessario
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: post.title,
+            description: post.description || '',
+        }
+    };
+}
+
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+    const { slug } = await params;
     const post = posts.find((p) => p.slug === slug);
 
     if (!post) {
@@ -33,10 +51,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                     <Link href="/blog" className="link-arrow mb-8 inline-flex items-center gap-2 text-sm">
                         <ArrowLeft size={16} /> Torna al Blog
                     </Link>
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                    >
+                    <div>
                         <span className="badge">
                             {new Date(post.date).toLocaleDateString('it-IT', {
                                 year: 'numeric',
@@ -46,28 +61,18 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                         </span>
                         <h1>{post.title}</h1>
                         <p className="subtitle">{post.description}</p>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
             <section className="blog-content-section">
                 <div className="container narrow-container">
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.3 }}
-                        className="prose"
-                    >
-                        <MDXContent code={post.body} />
-                    </motion.div>
+                    <div className="prose">
+                        <MDXRenderer code={post.body} />
+                    </div>
 
                     <div className="post-footer mt-20">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="blog-cta"
-                        >
+                        <div className="blog-cta">
                             <div className="blog-cta-content">
                                 <h3>Ti interessa quello che facciamo?</h3>
                                 <p>Resta aggiornato sulle nostre attività o diventa parte del cambiamento.</p>
@@ -75,7 +80,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                                     Contattaci
                                 </Link>
                             </div>
-                        </motion.div>
+                        </div>
                     </div>
                 </div>
             </section>

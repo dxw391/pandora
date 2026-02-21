@@ -1,25 +1,42 @@
-"use client";
-
 import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Clock, Headphones } from 'lucide-react';
 import { podcasts } from 'content';
-import * as runtime from 'react/jsx-runtime';
+import MDXRenderer from '@/components/MDXRenderer';
+import { Metadata } from 'next';
 
-// Componente per renderizzare l'MDX compilato da Velite
-const MDXContent = ({ code }: { code: string }) => {
-    const Component = React.useMemo(() => {
-        const fn = new Function(code);
-        return fn(runtime).default;
-    }, [code]);
+interface PodcastEpisodePageProps {
+    params: Promise<{ slug: string }>;
+}
 
-    return <Component />;
-};
+export async function generateMetadata({ params }: PodcastEpisodePageProps): Promise<Metadata> {
+    const { slug } = await params;
+    const podcast = podcasts.find((p) => p.slug === slug);
 
-export default function PodcastEpisodePage({ params }: { params: Promise<{ slug: string }> }) {
-    const { slug } = React.use(params);
+    if (!podcast) {
+        return {};
+    }
+
+    return {
+        title: `${podcast.title} — Pandora Podcast`,
+        description: podcast.description,
+        openGraph: {
+            title: podcast.title,
+            description: podcast.description || '',
+            type: 'music.song', // O 'article', ma 'music.song' o simili è più specifico per podcast
+            url: `https://pandora.it/blog/podcast/${podcast.slug}`,
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: podcast.title,
+            description: podcast.description || '',
+        }
+    };
+}
+
+export default async function PodcastEpisodePage({ params }: PodcastEpisodePageProps) {
+    const { slug } = await params;
     const podcast = podcasts.find((p) => p.slug === slug);
 
     if (!podcast) {
@@ -33,11 +50,7 @@ export default function PodcastEpisodePage({ params }: { params: Promise<{ slug:
                     <Link href="/blog" className="link-arrow mb-8 inline-flex items-center gap-2 text-sm back-link">
                         <ArrowLeft size={16} /> Torna a Blog & Podcast
                     </Link>
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="episode-header-content"
-                    >
+                    <div className="episode-header-content">
                         <div className="episode-badge">
                             <Headphones size={16} />
                             <span>Podcast</span>
@@ -60,7 +73,7 @@ export default function PodcastEpisodePage({ params }: { params: Promise<{ slug:
                                 </span>
                             )}
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
@@ -76,22 +89,12 @@ export default function PodcastEpisodePage({ params }: { params: Promise<{ slug:
                         </div>
                     )}
 
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.3 }}
-                        className="prose"
-                    >
-                        <MDXContent code={podcast.body} />
-                    </motion.div>
+                    <div className="prose">
+                        <MDXRenderer code={podcast.body} />
+                    </div>
 
                     <div className="post-footer mt-20">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="blog-cta"
-                        >
+                        <div className="blog-cta">
                             <div className="blog-cta-content">
                                 <h3>Ti piace il nostro podcast?</h3>
                                 <p>Seguici per non perdere i prossimi episodi e resta aggiornato sulle nostre attività.</p>
@@ -99,7 +102,7 @@ export default function PodcastEpisodePage({ params }: { params: Promise<{ slug:
                                     Contattaci
                                 </Link>
                             </div>
-                        </motion.div>
+                        </div>
                     </div>
                 </div>
             </section>

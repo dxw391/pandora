@@ -1,22 +1,36 @@
-import React, { useMemo } from 'react';
+import { themes } from 'content';
+import MDXRenderer from '@/components/MDXRenderer';
+import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, ThumbsUp } from 'lucide-react';
 import CreateProposalButton from '@/components/CreateProposalButton';
-import * as runtime from 'react/jsx-runtime';
-import { themes } from 'content';
 
-const MDXContent = ({ code }: { code: string }) => {
-    const Component = useMemo(() => {
-        const fn = new Function(code);
-        return fn(runtime).default;
-    }, [code]);
+interface ThemeDetailPageProps {
+    params: Promise<{ theme: string }>;
+}
 
-    return <Component />;
-};
+export async function generateMetadata({ params }: ThemeDetailPageProps): Promise<Metadata> {
+    const { theme: slug } = await params;
+    const theme = themes.find((t) => t.slug === slug);
 
-export default async function ThemeDetailPage({ params }: { params: Promise<{ theme: string }> }) {
+    if (!theme) {
+        return {};
+    }
+
+    return {
+        title: `${theme.title} — Temi Pandora`,
+        description: theme.description,
+        openGraph: {
+            title: theme.title,
+            description: theme.description || '',
+            url: `https://pandora.it/temi/${theme.slug}`,
+        }
+    };
+}
+
+export default async function ThemeDetailPage({ params }: ThemeDetailPageProps) {
     const { theme: slug } = await params;
     const supabase = await createClient();
 
@@ -40,7 +54,7 @@ export default async function ThemeDetailPage({ params }: { params: Promise<{ th
 
     // Get vote counts for each proposal
     const proposalsWithVotes = await Promise.all(
-        (themeProposals || []).map(async (proposal) => {
+        (themeProposals || []).map(async (proposal: any) => {
             const { count } = await supabase
                 .from('proposal_votes')
                 .select('*', { count: 'exact', head: true })
@@ -70,7 +84,7 @@ export default async function ThemeDetailPage({ params }: { params: Promise<{ th
                     <div className="about-grid">
                         <div className="theme-intro">
                             <div className="prose">
-                                <MDXContent code={theme.body} />
+                                <MDXRenderer code={theme.body} />
                             </div>
                         </div>
                         <div className="theme-meta-sidebar">
@@ -99,7 +113,7 @@ export default async function ThemeDetailPage({ params }: { params: Promise<{ th
                     </div>
 
                     <div className="proposals-grid">
-                        {proposalsWithVotes.map((proposal) => (
+                        {proposalsWithVotes.map((proposal: any) => (
                             <article
                                 key={proposal.id}
                                 className="proposal-card"
