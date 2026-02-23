@@ -1,0 +1,16 @@
+
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 238 260" width="238" height="260">
+	<style>
+		.s0 { fill: #ffffff;stroke: #000000;stroke-linecap: round;stroke-linejoin: round;stroke-width: 4 } 
+	</style>
+	<g id="Layer 1">
+		<g id="Cartella 1">
+			<g id="Cartella 2">
+				<path id="Forma 1" fill-rule="evenodd" class="s0" d="m50.1 162.46c0 0 52.75-48.58 58.1-53.59 6.9-6.46 5.44-15.47 0.89-20.16-3.5-3.62-23.32-20.67-23.32-20.67l-35.67 30.17z"/>
+				<path id="Forma 1 copy" fill-rule="evenodd" class="s0" d="m50.1 98.04c0 0 52.75 48.58 58.1 53.59 6.9 6.46 5.44 15.46 0.89 20.16-3.5 3.62-23.32 20.67-23.32 20.67l-35.67-30.18z"/>
+				<path id="Forma 1 copy 2" fill-rule="evenodd" class="s0" d="m178.94 162.46c0 0-52.75-48.58-58.1-53.59-6.9-6.46-5.44-15.47-0.89-20.16 3.5-3.62 23.32-20.67 23.32-20.67l35.67 30.17z"/>
+				<path id="Forma 1 copy 3" fill-rule="evenodd" class="s0" d="m178.94 98.04c0 0-52.75 48.58-58.1 53.59-6.9 6.46-5.44 15.46-0.89 20.16 3.5 3.62 23.32 20.67 23.32 20.67l35.67-30.18z"/>
+			</g>
+		</g>
+	</g>
+</svg>
