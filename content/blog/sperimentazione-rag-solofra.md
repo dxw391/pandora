@@ -1,7 +1,7 @@
 ---
 title: "Una Sperimentazione sui Documenti del Comune di Solofra"
 date: 2026-04-19
-description: "Inauguriamo il blog di Pandora, l'osservatorio civico che scoperchia il vaso della politica locale per riportare al centro trasparenza, fatti e speranza."
+description: "Un progetto sperimentale che esplora l'uso dell'Intelligenza Artificiale (RAG) per interrogare in linguaggio naturale gli atti pubblici del Comune di Solofra, migliorando l'accessibilità per cittadini e dipendenti."
 author: "Associazione Pandore"
 category: "Innovazione & Trasparenza"
 ---
